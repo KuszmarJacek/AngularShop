@@ -25,6 +25,18 @@ export class ValidationHelper {
         case "pattern":
           messages.push(`The ${name} contains illegal characters`);
           break;
+        case "limit":
+          messages.push(`The ${name} must be less than ${errors['limit'].limit}`);
+          break;
+        case "hilow":
+          messages.push(`The ${name} must be between ${errors['hilow'].low} and ${errors['hilow'].high}`);
+          break;
+        case "unique":
+          messages.push(`The ${name} must be unique`);
+          break;
+        case "prohibited":
+          messages.push(`The ${name} may not contain "${errors['prohibited'].prohibited}"`);
+          break;
       }
     }
     return messages;

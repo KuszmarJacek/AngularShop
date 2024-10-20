@@ -16,7 +16,7 @@ export class ValidationErrorsDirective implements OnInit {
   formGroup?: FormGroup;
 
   ngOnInit(): void {
-    // wtf...
+    // fun
     let formatter = new ValidationHelper();
     if (this.formGroup && this.name) {
       let control = this.formGroup?.get(this.name);

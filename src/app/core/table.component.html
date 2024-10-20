@@ -5,6 +5,7 @@
       <th>Name</th>
       <th>Category</th>
       <th>Price</th>
+      <th>Keywords</th>
       <th></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <td>{{item.name}}</td>
       <td>{{item.category}}</td>
       <td>{{item.price}}</td>
+      <td>{{item.keywords?.join(", ")}}</td>
       <td class="text-center">
         <button class="btn btn-danger btn-sm m-1" (click)="deleteProduct(item.id)">
           Delete
