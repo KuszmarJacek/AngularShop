@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { HttpClientModule } from "@angular/common/http";
 import { Model } from './repository.model';
-import { StaticDataSource } from './static.datasource';
+import { RestDataSource } from './rest.datasource';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule],
-  providers: [Model, StaticDataSource],
+  imports: [HttpClientModule],
+  providers: [Model, RestDataSource],
 })
 export class ModelModule {}
