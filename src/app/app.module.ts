@@ -5,11 +5,12 @@ import { CoreModule } from './core/core.module';
 import { MessagesModule } from './messages/messages.module';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
+import {TermsGuard} from "./terms.guard";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, ModelModule, CoreModule, MessagesModule, routing],
-  providers: [],
+  providers: [TermsGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

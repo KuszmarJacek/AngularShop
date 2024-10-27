@@ -2,7 +2,7 @@
   <button class="btn btn-secondary m-1" [routerLink]="['/form', 'edit', previousId()]">Previous</button>
   <button class="btn btn-secondary m-1" [routerLink]="['/form', 'edit', nextId()]">Next</button>
 </div>
-<form [formGroup]="productForm" #form="ngForm" (ngSubmit)="submitForm()" (reset)="resetForm()">
+<form [formGroup]="productForm" #form="ngForm" (ngSubmit)="submitForm()">
   <div class="form-group">
     <label>Name</label>
     <input class="form-control" formControlName="name" />
