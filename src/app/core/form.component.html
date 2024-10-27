@@ -1,3 +1,7 @@
+<div *ngIf="editing" class="p-2">
+  <button class="btn btn-secondary m-1" [routerLink]="['/form', 'edit', previousId()]">Previous</button>
+  <button class="btn btn-secondary m-1" [routerLink]="['/form', 'edit', nextId()]">Next</button>
+</div>
 <form [formGroup]="productForm" #form="ngForm" (ngSubmit)="submitForm()" (reset)="resetForm()">
   <div class="form-group">
     <label>Name</label>
@@ -54,7 +58,7 @@
     <button type="submit" class="btn btn-primary" [class.btn-warning]="editing" [disabled]="form.invalid">
       {{editing ? "Save" : "Create"}}
     </button>
-    <button type="reset" class="btn btn-secondary m-1">
+    <button type="reset" class="btn btn-secondary m-1" routerLink="/">
       Cancel
     </button>
   </div>

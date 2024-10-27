@@ -1,32 +1,61 @@
-<table class="table table-sm table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Keywords</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of Products()">
-      <td>{{item.id}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.category}}</td>
-      <td>{{item.price}}</td>
-      <td>{{item.keywords?.join(", ")}}</td>
-      <td class="text-center">
-        <button class="btn btn-danger btn-sm m-1" (click)="deleteProduct(item.id)">
-          Delete
-        </button>
-        <button class="btn btn-warning btn-sm" (click)="editProduct(item.id)">
-          Edit
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<button class="btn btn-primary mt-1" (click)="createProduct()">
-  Create New Product
-</button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto">
+      <div class="d-grid gap-2">
+        <button class="btn btn-secondary" routerLink="/table" routerLinkActive="bg-primary" [routerLinkActiveOptions]="{exact: true}">All</button>
+        <button *ngFor="let category of Categories()" class="btn btn-secondary" [routerLink]="['/table', category]" routerLinkActive="bg-primary">{{ category }}</button>
+      </div>
+    </div>
+    <div class="col">
+      <button class="btn bnt-info mx-1" routerLink="products">Count Products</button>
+      <button class="btn btn-primary mx-1" routerLink="categories">Count Categories</button>
+      <div class="my-2">
+        <router-outlet></router-outlet>
+      </div>
+      <table class="table table-sm table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Keywords</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of Products()">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.category}}</td>
+          <td>{{item.price | currency : "PLN"}}</td>
+          <td>{{item.keywords?.join(", ")}}</td>
+          <td class="text-center">
+            <button class="btn btn-danger btn-sm m-1" (click)="deleteProduct(item.id)">
+              Delete
+            </button>
+            <button class="btn btn-warning btn-sm" [routerLink]="['/form', 'edit', item.id]">
+              Edit
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="p-2 text-center">
+  <button class="btn btn-primary mt-1" routerLink="/form/create">
+    Create New Product
+  </button>
+  <button *ngIf="!environment.production" class="btn btn-danger mt-1 mx-1" (click)="deleteProduct(-1)">
+    Generate HTTP Error
+  </button>
+  <button *ngIf="!environment.production" class="btn btn-danger mt-1 mx-1" routerLink="I am not a valid link">
+    Generate Routing Error
+  </button>
+</div>
+
+
+

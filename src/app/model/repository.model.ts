@@ -1,8 +1,6 @@
 import { Injectable, Signal, signal } from '@angular/core';
 import { Product } from './product.model';
 import { RestDataSource } from './rest.datasource';
-import { Observable } from 'rxjs';
-// import { StaticDataSource } from './static.datasource';
 
 @Injectable()
 export class Model {
@@ -17,7 +15,7 @@ export class Model {
   }
 
   getProduct(id: number): Product | undefined {
-    return this.products().find((p) => p.id == id);
+    return this.products().find(p => p.id == id);
   }
 
   saveProduct(product: Product) {
@@ -44,5 +42,27 @@ export class Model {
         }
       });
     });
+  }
+
+  getNextProductId(id?: number): number {
+    let nextId = 0;
+    let index = this.products().findIndex(p => p.id == id);
+    if (index > -1) {
+      nextId = this.products()[this.products().length > index + 1 ? index + 1 : 0].id ?? 0;
+    } else {
+      nextId = id || 0;
+    }
+    return nextId;
+  }
+
+  getPreviousProductId(id?: number): number {
+    let nextId = 0;
+    let index = this.products().findIndex(p => p.id == id);
+    if (index > -1) {
+      nextId = this.products()[index > 0 ? index - 1 : this.products().length - 1].id ?? 0;
+    } else {
+      nextId = id || 0;
+    }
+    return nextId;
   }
 }
