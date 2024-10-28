@@ -1,4 +1,4 @@
-# CrudShop
+# AngularShop
 This is a simple Angular app made for myself so that I can catch up with things new in Angular 16 like signals, as well as other things like reactive forms, routing guards, REST API fetching.
 
 ## How to run

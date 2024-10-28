@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "crudShop": {
+    "AngularShop": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -92,10 +92,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "crudShop:build:production"
+              "browserTarget": "AngularShop:build:production"
             },
             "development": {
-              "browserTarget": "crudShop:build:development"
+              "browserTarget": "AngularShop:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -103,7 +103,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "crudShop:build"
+            "browserTarget": "AngularShop:build"
           }
         },
         "test": {
