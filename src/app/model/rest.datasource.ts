@@ -10,8 +10,7 @@ export class RestDataSource {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<Product[]> {
-    return this.sendRequest<Product[]>('GET', REST_URL)
-      .pipe(delay(1000));
+    return this.sendRequest<Product[]>('GET', REST_URL);
   }
 
   saveProduct(product: Product): Observable<Product> {

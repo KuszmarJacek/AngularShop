@@ -46,7 +46,7 @@
 </div>
 
 <div class="p-2 text-center">
-  <button class="btn btn-primary mt-1" routerLink="/form/create">
+  <button class="btn btn-primary mt-1 mx-1" routerLink="/form/create">
     Create New Product
   </button>
   <button *ngIf="!environment.production" class="btn btn-danger mt-1 mx-1" (click)="deleteProduct(-1)">
@@ -54,6 +54,9 @@
   </button>
   <button *ngIf="!environment.production" class="btn btn-danger mt-1 mx-1" routerLink="I am not a valid link">
     Generate Routing Error
+  </button>
+  <button class="btn btn-danger mt-1 mx-1" routerLink="/ondemand">
+    Load Module
   </button>
 </div>
 

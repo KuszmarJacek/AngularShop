@@ -14,6 +14,8 @@ import {CategoryCountComponent} from "./core/categoryCount.component";
 import {ModelResolver} from "./model/model.resolver";
 import {TermsGuard} from "./terms.guard";
 import {UnsavedGuard} from "./core/unsaved.guard";
+import {LoadGuard} from "./load.guard";
+import {SimpleComponent} from "./simple.component";
 
 // const childRoutes: Routes = [
 //   { path: "products", component: ProductCountComponent },
@@ -35,8 +37,14 @@ const childRoutes: Routes = [
 ];
 
 const routes: Routes = [
-  // { path: "form/edit", component: FormComponent },
-  // { path: "form/create", component: FormComponent },
+  {
+    // lazily load the ondemand module
+    path: "ondemand",
+    // guard the ondemand module route
+    canActivateChild: mapToCanActivate([LoadGuard]),
+    loadChildren: () => import("./ondemand/ondemand.module")
+      .then(m => m.OndemandModule),
+  },
   {
     path: "form/:mode/:id",
     component: FormComponent,
@@ -51,7 +59,8 @@ const routes: Routes = [
   },
   { path: "table", component: TableComponent, children: childRoutes },
   { path: "table/:category", component: TableComponent, children: childRoutes },
-  { path: "", redirectTo: "/table", pathMatch: "full" },
+  { path: "", component: SimpleComponent },
+  // { path: "", redirectTo: "/table", pathMatch: "full" },
   { path: "**", component: NotFoundComponent, pathMatch: "full" },
 ];
 

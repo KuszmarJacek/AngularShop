@@ -6,11 +6,13 @@ import { MessagesModule } from './messages/messages.module';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import {TermsGuard} from "./terms.guard";
+import {LoadGuard} from "./load.guard";
+import {SimpleComponent} from "./simple.component";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SimpleComponent],
   imports: [BrowserModule, ModelModule, CoreModule, MessagesModule, routing],
-  providers: [TermsGuard],
+  providers: [TermsGuard, LoadGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
